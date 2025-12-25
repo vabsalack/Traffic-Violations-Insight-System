@@ -71,8 +71,10 @@ def preprocess_chunk(chunk: pd.DataFrame) -> pd.DataFrame:
             "Agency",
             "SubAgency",
             "Description",
+            
             "Latitude",
             "Longitude",
+
             "Accident",
             "Personal Injury",
             "Fatal",
@@ -82,6 +84,8 @@ def preprocess_chunk(chunk: pd.DataFrame) -> pd.DataFrame:
         ]
     ]
 
+
+    # columns renaming
     chunk.columns = [
         "seq_id",
         "violation_type",
