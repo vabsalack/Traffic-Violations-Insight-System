@@ -22,6 +22,8 @@ CREATE TABLE traffic_violations (
     property_damage BOOLEAN,
     alcohol BOOLEAN,
     work_zone BOOLEAN,
+    personal_injury BOOLEAN,
+    fatal BOOLEAN,
 
     search_conducted BOOLEAN,
     search_disposition VARCHAR(100),

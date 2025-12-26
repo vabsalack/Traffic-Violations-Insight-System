@@ -14,13 +14,13 @@ def get_engine(bound=""):
     server_url = f"mysql+mysqlconnector://{USER_NAME}:{USER_PASSWORD}@{HOST_ID}/{bound}"
 
     try:
-        server_engine = create_engine(server_url)
+        server_engine = create_engine(server_url, pool_pre_ping=True, pool_recycle=3600)
     except SQLAlchemyError as e:
         print(f"Error occured during engine creation: {e}")
     else:
         return server_engine
 
-def apply_schema(engine):
+def apply_schema_get_engine(engine):
     """checks for existing schema else apply schema and return engine bound to the database"""
     inspector = inspect(engine)
     db_names = inspector.get_schema_names()
@@ -28,8 +28,10 @@ def apply_schema(engine):
     bool_apply_schema = False
 
     if DB_NAME not in db_names:
+        print("=" * 60)
         print(f"{DB_NAME} not in server")
         try:
+            print("=" * 60)
             print("opening schema file")
             with open(SCHEMA_FILE, "r", encoding="utf-8") as f:
                 print("reading schema file")
@@ -39,7 +41,7 @@ def apply_schema(engine):
 
         else:
             statements = [stmt.strip() for stmt in sql_content.split(";") if stmt.strip()]
-
+            print("=" * 60)
             with engine.connect() as conn:
                 try:
                     for stmt in statements:
@@ -49,10 +51,12 @@ def apply_schema(engine):
                     print(f"Error executing statement:\n{stmt}\n{e}")
                 else:
                     print("schema successfully applied without any error")
+                    print("=" * 60)
                     bool_apply_schema = True
     else:
         bool_apply_schema = True
         print(f"{DB_NAME} already exists")
+        print("=" * 60)
     
     if not bool_apply_schema: return
 
@@ -67,5 +71,6 @@ def apply_schema(engine):
     for col in columns:
         print(f"{col['name'] :<{pad}} {str(col['type']) :<{pad}} {col['nullable']}")
 
+    print("=" * 60)
     print(f"returning server engine bound to {DB_NAME}")
     return engine
