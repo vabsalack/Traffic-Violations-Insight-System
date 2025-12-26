@@ -1,6 +1,6 @@
 # Sportradar NCAAFB Dashboard
 
-<img src="pics/Police_officer_writing_a_ticket.eps" width="200" alt="traffic violation image">
+<img src="pics/Police_officer_writing_a_ticket.jpg" width="200" alt="traffic violation image">
 
 ## Overview
 A complete data analytics system that transforms a large, raw dataset of traffic violations (≈ 10 lakh rows) into actionable insights through Exploratory Data Analysis (EDA), data cleaning, preprocessing, and an interactive visualization dashboard built with Streamlit
