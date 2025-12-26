@@ -36,9 +36,9 @@ Link: [traffic_US_dataset](https://drive.google.com/drive/folders/1ZoS_lQQXKwJf-
 
 | | |
 |---|---|
-| ![summary1](artifacts/home.png) | ![summary2](artifacts/ai_querier.png) |
-| ![temporal trends](artifacts/teams.png) | ![vehicle analysis](artifacts/player_stats.png) |
-| ![demographics](artifacts/seasons.png) | ![Rankings](artifacts/rankings.png) |
+| ![summary1](pics/summary.png) | ![summary2](pics/summary2.png) |
+| ![temporal trends](pics/temporal_trends.png) | ![vehicle analysis](pics/vehicle_analysis.png) |
+| ![demographics](pics/demographics.png) | ![sunburst_vehicle_analysis](pics/sunburst_vehicle.png)|
 
 ## Getting started
 1. Create virtual environment:  
