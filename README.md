@@ -6,10 +6,9 @@
 A complete data analytics system that transforms a large, raw dataset of traffic violations (≈ 10 lakh rows) into actionable insights through Exploratory Data Analysis (EDA), data cleaning, preprocessing, and an interactive visualization dashboard built with Streamlit
 
 ## Dataset & Tech stack
-Link: [traffic_US_dataset](https://drive.google.com/drive/folders/1ZoS_lQQXKwJf-hfp--eLB-hPK5kKIC6k)
 
-## Dataset
-- 
+### Dataset
+- Link: [traffic_US_dataset](https://drive.google.com/drive/folders/1ZoS_lQQXKwJf-hfp--eLB-hPK5kKIC6k)
 
 ### Language / Runtime
 - Python >= 3.11 (streamlit compatible version on linux)
@@ -40,6 +39,11 @@ Link: [traffic_US_dataset](https://drive.google.com/drive/folders/1ZoS_lQQXKwJf-
 | ![temporal trends](pics/temporal_trends.png) | ![vehicle analysis](pics/vehicle_analysis.png) |
 | ![demographics](pics/demographics.png) | ![sunburst_vehicle_analysis](pics/sunburst_vehicle.png)|
 
+## Flow Diagram
+
+<!-- ![project FD svg](pics/project_metadata.svg) -->
+<img src="pics/project_metadata.svg" width="1300" alt="project_metadata svg">
+
 ## Getting started
 1. Create virtual environment:  
      - `uv init`
@@ -48,4 +52,6 @@ Link: [traffic_US_dataset](https://drive.google.com/drive/folders/1ZoS_lQQXKwJf-
      - `uv sync`
 3. Run the app:  
      - `streamlit run ./app.py`
+
+
 
