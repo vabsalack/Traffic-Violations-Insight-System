@@ -5,10 +5,6 @@ from sqlalchemy import text, bindparam
 from datetime import date
 from db_utils import get_engine, DB_NAME
 
-# =============================
-# Cached metadata loaders
-# =============================
-
 @st.cache_data(ttl=3600)
 def load_filter_values():
     engine = get_engine(DB_NAME)
@@ -36,9 +32,6 @@ def summary_page():
 
     left, center, right = st.columns([1.2, 3, 1])
 
-    # =============================
-    # LEFT: Filters
-    # =============================
     with left:
         st.subheader("Filters")
 
@@ -67,9 +60,6 @@ def summary_page():
             ["All", "Yes", "No"]
         )
 
-    # =============================
-    # WHERE clause construction
-    # =============================
     where_clauses = [
         "stop_datetime BETWEEN :start_date AND :end_date",
         "latitude IS NOT NULL",
@@ -111,9 +101,6 @@ def summary_page():
 
     where_sql = " AND ".join(where_clauses)
 
-    # =============================
-    # MAIN DATA QUERY
-    # =============================
     query = text(f"""
             SELECT
                 latitude,
@@ -126,7 +113,6 @@ def summary_page():
             LIMIT 50000
             """)
 
-    # Dynamically attach expanding bindparams
     binds = []
 
     if state:
@@ -142,9 +128,7 @@ def summary_page():
         query = query.bindparams(*binds)
 
     df = pd.read_sql(query, engine, params=params)
-    # =============================
-    # CENTER: Point Map
-    # =============================
+
     with center:
         st.subheader("Violation Locations")
 
@@ -163,9 +147,7 @@ def summary_page():
             )
             st.plotly_chart(fig, use_container_width=True)
 
-    # =============================
-    # RIGHT: State Ranking
-    # =============================
+
     with right:
         st.subheader("Violations by State")
 

@@ -15,9 +15,6 @@ def demographics_page():
         "It does not imply causation or bias."
     )
 
-    # =============================
-    # Stops by Race
-    # =============================
     race_query = text("""
         SELECT
             race,
@@ -38,9 +35,7 @@ def demographics_page():
     )
     st.plotly_chart(fig_race, use_container_width=True)
 
-    # =============================
-    # Stops by Gender
-    # =============================
+
     gender_query = text("""
         SELECT
             gender,
@@ -60,9 +55,6 @@ def demographics_page():
     )
     st.plotly_chart(fig_gender, use_container_width=True)
 
-    # =============================
-    # Search Rate by Race
-    # =============================
     search_query = text("""
         SELECT
             race,

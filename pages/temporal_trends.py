@@ -11,9 +11,6 @@ def temporal_trends_page():
 
     st.title("Temporal Trends Analysis")
 
-    # =============================
-    # Filters
-    # =============================
     left, right = st.columns([1, 3])
 
     with left:
@@ -27,9 +24,7 @@ def temporal_trends_page():
             ["All", "CITATION", "WARNING", "ESERO"]
         )
 
-    # =============================
-    # SQL: Monthly trend
-    # =============================
+
     where = ["stop_datetime BETWEEN :start AND :end"]
     params = {"start": start_date, "end": end_date}
 
@@ -51,9 +46,6 @@ def temporal_trends_page():
 
     monthly_df = pd.read_sql(monthly_query, engine, params=params)
 
-    # =============================
-    # SQL: Hour × Weekday heatmap
-    # =============================
     heatmap_query = text(f"""
         SELECT
             HOUR(stop_datetime) AS hour,
@@ -66,9 +58,6 @@ def temporal_trends_page():
 
     heat_df = pd.read_sql(heatmap_query, engine, params=params)
 
-    # =============================
-    # Visuals
-    # =============================
     with right:
         st.subheader("Monthly Violation Trend")
 
