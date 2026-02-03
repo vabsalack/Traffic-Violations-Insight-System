@@ -1,4 +1,4 @@
-# Sportradar NCAAFB Dashboard
+# Traffic Violations Insight System
 
 <img src="pics/Police_officer_writing_a_ticket.jpg" width="200" alt="traffic violation image">
 
